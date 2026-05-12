@@ -1,0 +1,11 @@
+.chart-placeholder {
+  background: #1c1c20;
+  border-radius: 10px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7dd3a7;
+  font-size: 14px;
+  margin-top: 25px;
+}
