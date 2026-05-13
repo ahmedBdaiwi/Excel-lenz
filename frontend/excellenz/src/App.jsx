@@ -1,14 +1,7 @@
-import { useState } from 'react'
-import './App.css'
+import React from "react";
+import Dashboard from "./pages/Dashboard";
+import "./styles/global.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <h1>This is going to be our Website</h1>
-    </>
-  )
+export default function App() {
+  return <Dashboard />;
 }
-
-export default App

@@ -1,0 +1,19 @@
+.card {
+  background: #141a1f;
+  border-radius: 12px;
+  padding: 20px;
+  color: #e5e7eb;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+.card-title {
+  color: #00ff88;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
