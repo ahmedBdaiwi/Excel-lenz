@@ -10,6 +10,7 @@
 
   transition: width 0.3s ease;
   overflow: hidden;
+  user-select: none;
 }
 
 /* STATES */
@@ -24,20 +25,105 @@
 /* HEADER */
 .sidebar-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
 }
 
-.sidebar-logo {
+.sidebar.collapsed .sidebar-header{
+  padding: 14px;
+}
+
+.sidebarlogo {
+  transition: width 0.3s ease;
+  width: 40px;
+  animation: logoGlow 1s infinite alternate;
+  border-radius: 50%;
+  
+}
+
+@keyframes logoGlow{
+  from{box-shadow: 0px 0px 1px #fff,0px 0px 1px #107705;}
+  to{box-shadow:0px 0px 3px #fff,0px 0px 5px #107705;}
+}
+
+.logoText {
+  overflow: hidden;
+  white-space: nowrap;
   color: #00ff88;
-  font-weight: 700;
-  font-size: 18px;
-  margin: 0;
+  font-size: 120%;
+}
+
+.logoText--visible {
+  animation:
+    slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards,
+    glow 1s 0.15s infinite alternate;
+  opacity: 0; 
+  max-width: 200px;
+  margin-left: 10px;
+  transition: max-width 0.3s ease, margin-left 0.3s ease;
+
+}
+
+.logoText--hidden {
+  animation: slideOut 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
+  opacity: 1;
+  max-width: 0;
+  margin-left: 0;
+  transition: max-width 0.3s ease, margin-left 0.3s ease;
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: normal;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-12px);
+    letter-spacing: -0.05em;
+  }
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+    letter-spacing: -0.05em;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: normal;
+  }
+}
+
+
+@keyframes glow{
+  from{text-shadow:0px 0px 1px #fff,0px 0px 1px #107705;}
+  to{text-shadow:0px 0px 3px #fff,0px 0px 3px #107705;}
+}
+
+
+/* TOGGLE BUTTON */
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 18px;
+  margin: 4px 10px;
+  border-radius: 10px;
+
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
-/* TOGGLE BUTTON */
 .toggle-btn {
   background: transparent;
   border: none;
@@ -76,6 +162,11 @@
 
 /* COLLAPSED CENTER ICONS */
 .sidebar.collapsed .sidebar-item {
+  justify-content: center;
+  padding: 14px;
+}
+
+.sidebar.collapsed .sidebar-toggle{
   justify-content: center;
   padding: 14px;
 }

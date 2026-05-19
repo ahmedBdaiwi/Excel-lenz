@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/sidebar.css";
+import logoFull from "../assets/logo.png"
 import {
   FaTachometerAlt,
   FaChartLine,
@@ -15,14 +16,24 @@ export default function Sidebar() {
     <div className={`sidebar ${open ? "open" : "collapsed"}`}>
       {/* HEADER */}
       <div className="sidebar-header">
-        <h2 className="sidebar-logo">{open ? "Excellenz" : "EX"}</h2>
+        <img
+          src={logoFull}
+          alt="Excellenz Logo"
+          className={`sidebarlogo`}
+        />
+        <p className={`logoText ${open ? "logoText--visible" : "logoText--hidden"}`}>
+          Excellenz
+        </p>
+        {/* Date.now is here so the animation gets played everytime we open the sidebar */}
+      </div>
 
-        <button className="toggle-btn" onClick={() => setOpen(!open)}>
-          <FaBars />
-        </button>
+      <div className="sidebar-item" onClick={() => setOpen(!open)}>
+        <FaBars />
+        {open && <span>Menü</span>}
       </div>
 
       {/* ITEMS */}
+
       <div className="sidebar-item">
         <FaTachometerAlt />
         {open && <span>Dashboard</span>}
