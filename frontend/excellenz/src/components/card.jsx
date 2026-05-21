@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/card.css";
 
-export default function Card({ title, children }) {
-  return (
-    <div className="card">
-      <h3 className="card-title">{title}</h3>
-      {children}
-    </div>
-  );
+export default function Card({ title, children, tooltip }) {
+    return (
+        <div className="card" title={tooltip}>
+            <h3 className="card-title">{title}</h3>
+            {children}
+        </div>
+    );
 }
