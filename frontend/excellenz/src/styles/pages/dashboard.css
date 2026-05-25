@@ -1,15 +1,17 @@
 .layout {
   display: flex;
-  min-height: 100vh;
+  flex: 1;              
+  align-items: flex-start;
   background: radial-gradient(circle at top, #141420, #0b0b10);
   color: #eaeaf0;
   font-family: Inter, system-ui, sans-serif;
 }
-
 /* MAIN */
 .main {
   flex: 1;
   padding: 42px;
+  overflow-y: auto;    
+  height: 100vh;
 }
 
 /* HEADER */

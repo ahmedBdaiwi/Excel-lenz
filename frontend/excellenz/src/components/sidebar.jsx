@@ -1,55 +1,170 @@
 import React, { useState } from "react";
-import "../styles/sidebar.css";
-import logoFull from "../assets/logo.png"
+import "../styles/components/sidebar.css";
+
+import logoFull from "../assets/logo.png";
+
 import {
   FaTachometerAlt,
   FaChartLine,
   FaWallet,
   FaCogs,
   FaBars,
+  FaChevronDown,
+  FaChevronRight,
+  FaMoneyBillWave,
+  FaFileInvoiceDollar,
+  FaUniversity,
 } from "react-icons/fa";
 
-export default function Sidebar() {
-  const [open, setOpen] = useState(true);
+import { useNavigate, useLocation } from "react-router-dom";
+
+export default function Sidebar({ open, setOpen }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [financeOpen, setFinanceOpen] = useState(true);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <div className={`sidebar ${open ? "open" : "collapsed"}`}>
+      
       {/* HEADER */}
       <div className="sidebar-header">
         <img
           src={logoFull}
           alt="Excellenz Logo"
-          className={`sidebarlogo`}
+          className="sidebarlogo"
         />
-        <p className={`logoText ${open ? "logoText--visible" : "logoText--hidden"}`}>
-          Excellenz
-        </p>
-        {/* Date.now is here so the animation gets played everytime we open the sidebar */}
+
+        {open && (
+          <p className="logoText">
+            Excellenz
+          </p>
+        )}
       </div>
 
-      <div className="sidebar-item" onClick={() => setOpen(!open)}>
+      {/* TOGGLE */}
+      <div
+        className="sidebar-item"
+        onClick={() => setOpen(!open)}
+      >
         <FaBars />
         {open && <span>Menü</span>}
       </div>
 
-      {/* ITEMS */}
+      <div className="divider"></div>
 
-      <div className="sidebar-item">
+      {/* SECTION */}
+      {open && (
+        <p className="sidebar-section">
+          MAIN
+        </p>
+      )}
+
+      {/* DASHBOARD */}
+      <div
+        className={`sidebar-item ${
+          isActive("/dashboard") ? "active" : ""
+        }`}
+        onClick={() => navigate("/dashboard")}
+      >
         <FaTachometerAlt />
         {open && <span>Dashboard</span>}
       </div>
 
-      <div className="sidebar-item">
+      {/* SALES */}
+      <div
+        className={`sidebar-item ${
+          isActive("/sales") ? "active" : ""
+        }`}
+        onClick={() => navigate("/sales")}
+      >
         <FaChartLine />
         {open && <span>Umsatz</span>}
       </div>
 
-      <div className="sidebar-item">
+      {/* FINANCE SECTION */}
+      {open && (
+        <p className="sidebar-section">
+          FINANZEN
+        </p>
+      )}
+
+      <div
+        className={`sidebar-item ${
+          location.pathname.includes("/finance")
+            ? "active"
+            : ""
+        }`}
+        onClick={() => setFinanceOpen(!financeOpen)}
+      >
         <FaWallet />
-        {open && <span>Finanzen</span>}
+
+        {open && (
+          <>
+            <span>Finanzen</span>
+
+            <div className="expandIcon">
+              {financeOpen ? (
+                <FaChevronDown />
+              ) : (
+                <FaChevronRight />
+              )}
+            </div>
+          </>
+        )}
       </div>
 
-      <div className="sidebar-item">
+      {/* SUBMENU */}
+      {financeOpen && open && (
+        <div className="submenu">
+          
+          <div
+            className={`submenu-item ${
+              isActive("/finance/revenue")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/finance/revenue")}
+          >
+            <FaMoneyBillWave />
+            <span>Umsatzplanung</span>
+          </div>
+
+          <div
+            className={`submenu-item ${
+              isActive("/finance/costs")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/finance/costs")}
+          >
+            <FaFileInvoiceDollar />
+            <span>Kostenplanung</span>
+          </div>
+
+          <div
+            className={`submenu-item ${
+              isActive("/finance/liquidity")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/finance/liquidity")}
+          >
+            <FaUniversity />
+            <span>Liquidität</span>
+          </div>
+        </div>
+      )}
+
+      {/* SETTINGS */}
+      <div
+        className={`sidebar-item ${
+          isActive("/settings") ? "active" : ""
+        }`}
+        onClick={() => navigate("/settings")}
+      >
         <FaCogs />
         {open && <span>Einstellungen</span>}
       </div>

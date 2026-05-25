@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../styles/loadingScreen.css";
+import "../styles/components/loadingScreen.css";
 
 export default function LoadingScreen({ onComplete, holdMs = 700 }) {
   const [phase, setPhase] = useState("in"); // in | hold | out | done
@@ -64,11 +64,6 @@ export default function LoadingScreen({ onComplete, holdMs = 700 }) {
             <rect x="160" y="108" width="9" height="32" rx="1.5" />
             <rect x="172" y="96"  width="9" height="44" rx="1.5" />
           </g>
-
-          <text className="ls-text ls-text-die"
-            x="120" y="188" textAnchor="middle" fill="#00ff88"
-            fontFamily="'Georgia','Times New Roman',serif"
-            fontSize="16" fontStyle="italic" fontWeight="600" letterSpacing="2">Die</text>
 
           <text className="ls-text ls-text-excel"
             x="80" y="212" textAnchor="middle" fill="#eaeaf0"

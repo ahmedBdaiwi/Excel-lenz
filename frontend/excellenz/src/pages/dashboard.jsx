@@ -3,12 +3,17 @@ import Sidebar from "../components/Sidebar";
 import ProgressBar from "../components/ProgressBar";
 import ChartPlaceholder from "../components/ChartPlaceholder";
 import Card from "../components/Card";
-import "../styles/dashboard.css";
+import "../styles/pages/dashboard.css";
+import Streak from "../components/streak"
 
-export default function Dashboard() {
+export default function Dashboard({sidebarOpen, setSidebarOpen,})
+{
   return (
     <div className="layout">
-      <Sidebar />
+      <Sidebar
+        open={sidebarOpen}
+        setOpen={setSidebarOpen}
+      />
 
       <main className="main">
         <header className="header">
@@ -16,8 +21,7 @@ export default function Dashboard() {
             <h1 className="title">Umsatzziel Fortschritt</h1>
             <p className="subtitle">Live Überblick über deine Performance</p>
           </div>
-
-          <div className="badge">12 Tage Streak</div>
+          
         </header>
 
         <section className="progressSection">
@@ -37,6 +41,7 @@ export default function Dashboard() {
           <Card title="Nächster Meilenstein">75% – €14.000 fehlen</Card>
           <Card title="Performance">+12% diese Woche</Card>
           <Card title="Zieltrend">Stark wachsend</Card>
+          <Streak></Streak>
         </section>
       </main>
     </div>
