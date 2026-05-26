@@ -18,11 +18,9 @@ import {
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Sidebar({ open, setOpen }) {
+export default function Sidebar({ open, setOpen, financeOpen, setFinanceOpen, salesOpen, setSalesOpen }) {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [financeOpen, setFinanceOpen] = useState(true);
 
   const isActive = (path) => location.pathname === path;
 
@@ -44,7 +42,12 @@ export default function Sidebar({ open, setOpen }) {
         )}
       </div>
 
+      
       {/* TOGGLE */}
+      {/*
+
+        vorerst deaktiviert.
+
       <div
         className="sidebar-item"
         onClick={() => setOpen(!open)}
@@ -54,6 +57,8 @@ export default function Sidebar({ open, setOpen }) {
       </div>
 
       <div className="divider"></div>
+
+      */}
 
       {/* SECTION */}
       {open && (
@@ -73,16 +78,8 @@ export default function Sidebar({ open, setOpen }) {
         {open && <span>Dashboard</span>}
       </div>
 
-      {/* SALES */}
-      <div
-        className={`sidebar-item ${
-          isActive("/sales") ? "active" : ""
-        }`}
-        onClick={() => navigate("/sales")}
-      >
-        <FaChartLine />
-        {open && <span>Umsatz</span>}
-      </div>
+      
+
 
       {/* FINANCE SECTION */}
       {open && (
@@ -116,7 +113,7 @@ export default function Sidebar({ open, setOpen }) {
         )}
       </div>
 
-      {/* SUBMENU */}
+      {/* SUBMENU FINANCE*/}
       {financeOpen && open && (
         <div className="submenu">
           
@@ -142,6 +139,74 @@ export default function Sidebar({ open, setOpen }) {
           >
             <FaFileInvoiceDollar />
             <span>Kostenplanung</span>
+          </div>
+
+          <div
+            className={`submenu-item ${
+              isActive("/finance/liquidity")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/finance/liquidity")}
+          >
+            <FaUniversity />
+            <span>Liquidität</span>
+          </div>
+        </div>
+      )}
+
+      {/* SUBMENU SALES*/}
+      <div
+        className={`sidebar-item ${
+          location.pathname.includes("/sales")
+            ? "active"
+            : ""
+        }`}
+        onClick={() => setSalesOpen(!salesOpen)}
+      >
+        <FaWallet />
+
+        {open && (
+          <>
+            <span>Umsatz</span>
+
+            <div className="expandIcon">
+              {salesOpen ? (
+                <FaChevronDown />
+              ) : (
+                <FaChevronRight />
+              )}
+            </div>
+          </>
+        )}
+      </div>
+
+
+      {salesOpen && open && (
+        <div className="submenu">
+          
+          <div
+            className={`submenu-item ${
+              isActive("/sales")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/sales")}
+          >
+            <FaMoneyBillWave />
+            <span>Sales</span>
+          </div>
+
+          <div
+            className={`submenu-item ${
+              isActive("/sales/products")
+                ? "active-sub"
+                : ""
+            }`}
+            onClick={() => navigate("/sales/products")}
+          >
+            <FaFileInvoiceDollar />
+            <span>Produkte</span>
           </div>
 
           <div

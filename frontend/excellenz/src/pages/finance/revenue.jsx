@@ -10,10 +10,8 @@ import {
 
 import "../../styles/pages/finance/revenue.css";
 
-export default function Revenue({
-  sidebarOpen,
-  setSidebarOpen,
-}) {
+export default function Revenue({sidebarOpen, setSidebarOpen, salesOpen, setSalesOpen, financeOpen, setFinanceOpen}) 
+{
   const [revenues, setRevenues] = useState([
     {
       id: 1,
@@ -41,6 +39,10 @@ export default function Revenue({
       <Sidebar
         open={sidebarOpen}
         setOpen={setSidebarOpen}
+        salesOpen={salesOpen}
+        setSalesOpen={setSalesOpen}
+        financeOpen={financeOpen}
+        setFinanceOpen={setFinanceOpen}
       />
 
       <main className="revenueMain">

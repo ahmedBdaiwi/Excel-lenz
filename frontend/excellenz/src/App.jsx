@@ -5,13 +5,16 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/settings.jsx";
 import Finance from "./pages/finance.jsx";
 import Revenue from "./pages/finance/revenue.jsx";
-import Sales from "./pages/sales.jsx";
+import Sales from "./pages/sales/sales.jsx";
+import Products from "./pages/sales/products.jsx";
 import "./index.css";
 
 
 export default function App() {
   const [done, setDone] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [financeOpen, setFinanceOpen] = useState(true);
+  const [salesOpen, setSalesOpen] = useState(true);
 
   return (
     <BrowserRouter>
@@ -26,17 +29,35 @@ export default function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={
+            <Dashboard
+              sidebarOpen={sidebarOpen}
+              setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
+            />
+            } 
+          />
           <Route path="/dashboard" element={
             <Dashboard
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
             />
             } 
           />
           <Route path="/settings" element={ <Settings
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
             />
             } 
           />
@@ -46,6 +67,10 @@ export default function App() {
           <Route path="/finance" element={ <Finance
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
             />
             } 
           />
@@ -53,6 +78,10 @@ export default function App() {
           <Route path="/finance/revenue" element={ <Revenue
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
             />
             } 
           />
@@ -60,6 +89,22 @@ export default function App() {
           <Route path="/sales" element={ <Sales
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
+            />
+            } 
+          />
+
+
+          <Route path="/sales/products" element={ <Products
+              sidebarOpen={sidebarOpen}
+              setSidebarOpen={setSidebarOpen}
+              financeOpen={financeOpen}
+              setFinanceOpen={setFinanceOpen}
+              salesOpen={salesOpen}
+              setSalesOpen={setSalesOpen}
             />
             } 
           />

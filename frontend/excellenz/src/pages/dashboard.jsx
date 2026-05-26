@@ -6,13 +6,17 @@ import Card from "../components/Card";
 import "../styles/pages/dashboard.css";
 import Streak from "../components/streak"
 
-export default function Dashboard({sidebarOpen, setSidebarOpen,})
+export default function Dashboard({sidebarOpen, setSidebarOpen, salesOpen, setSalesOpen, financeOpen, setFinanceOpen})
 {
   return (
     <div className="layout">
       <Sidebar
         open={sidebarOpen}
         setOpen={setSidebarOpen}
+        salesOpen={salesOpen}
+        setSalesOpen={setSalesOpen}
+        financeOpen={financeOpen}
+        setFinanceOpen={setFinanceOpen}
       />
 
       <main className="main">

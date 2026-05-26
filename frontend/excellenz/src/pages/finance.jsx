@@ -10,12 +10,16 @@ import RecentEntries from "../components/finance/recentEntries";
 
 import "../styles/pages/finance.css";
 
-export default function Finance({ sidebarOpen, setSidebarOpen }) {
+export default function Finance({ sidebarOpen, setSidebarOpen, salesOpen, setSalesOpen, financeOpen, setFinanceOpen }) {
   return (
     <div className="layout">
       <Sidebar
         open={sidebarOpen}
         setOpen={setSidebarOpen}
+        salesOpen={salesOpen}
+        setSalesOpen={setSalesOpen}
+        financeOpen={financeOpen}
+        setFinanceOpen={setFinanceOpen}
       />
 
       <main className="financeMain">

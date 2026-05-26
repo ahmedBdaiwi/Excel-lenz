@@ -1,9 +1,10 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
+import "../../styles/pages/sales/products.css"
 
 
 
-export default function Settings({sidebarOpen, setSidebarOpen, salesOpen, setSalesOpen, financeOpen, setFinanceOpen}) {
+export default function Products({sidebarOpen, setSidebarOpen, salesOpen, setSalesOpen, financeOpen, setFinanceOpen}) {
     return(
         <div>
             <div className="layout">
