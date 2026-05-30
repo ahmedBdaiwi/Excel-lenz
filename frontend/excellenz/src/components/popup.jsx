@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/components/popup.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Popup({color, title, text}){
 
@@ -13,7 +15,9 @@ export default function Popup({color, title, text}){
         <div className="popupbox" style={{ borderColor: color }}>
             <div className="popuptitle"> {title} </div>
             <div className="popuptext"> {text} </div>
-            <div className="popupbutton" onClick={() => setVisible(false)}> X </div>
+            <div className="popupbutton" onClick={() => setVisible(false)}>
+                <FontAwesomeIcon icon={faXmark} />
+            </div>
         </div>
         );
 }

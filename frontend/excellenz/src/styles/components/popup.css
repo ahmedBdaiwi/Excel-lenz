@@ -1,3 +1,5 @@
+
+
 .popupbox{
     position: fixed;
     top: 5px;
@@ -38,9 +40,10 @@
     top: 3px;
     right: 3px;
     cursor: pointer;
-    background: #303345;
-    padding-left: 2px;
-    padding-right: 2px;
+
+    
     font-weight: bold;
+    border: 2px solid #303345;
+    border-radius: 5px;
 
 }
