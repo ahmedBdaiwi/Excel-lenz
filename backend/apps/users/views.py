@@ -10,8 +10,38 @@ from .serializers import (
 )
 
 
+
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        if not serializer.is_valid():
+            errors = {}
+
+            for field, msgs in serializer.errors.items():
+                errors[field] = {
+                    "message": msgs[0],
+                    "code": getattr(msgs[0], "code", None)
+                }
+
+            return Response(
+                {
+                    "success": False,
+                    "errors": errors
+                },
+                status=status.HTTP_200_OK 
+            )
+
+        self.perform_create(serializer)
+        return Response(
+            {
+                "success": True,
+                "user": serializer.data
+            },
+            status=status.HTTP_201_CREATED
+        )
 
 # IsAuthenticated ist hier sehr wichtig. Sensible Daten sollen NUR accessable sein, wenn der nutzer richtig Authentifiziert ist!!
 class MeView(generics.RetrieveAPIView):
@@ -26,10 +56,15 @@ class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
 
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            return Response(
+                serializer.errors,
+                status=status.HTTP_200_OK
+            )
 
         user = serializer.validated_data["user"]
 
         return Response({
-            "test" : "Hallo"
+            "message": "Login erfolgreich",
+            "username": user.username,
         }, status=status.HTTP_200_OK)

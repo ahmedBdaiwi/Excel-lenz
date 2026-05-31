@@ -39,18 +39,29 @@ const handleRegister = async () => {
         }),
     });
 
-    
-    if(await response.status === 200)
-    {
-        const data = await response.json();
-        console.log(data);
-        // User successfully registert
-        // redirect either to the dashboard or the company setup
-    }
-    else
-    {
+    const data = await response.json();
+
+    if (!response.ok) {
         // Popup printing "There was an error. Please try again later. If the error stays, please contact support."
-        print("Entweder fehler oder bereits registriert")
-        print(await response.status)
+        console.log("Error:", data);
+        return;
     }
+
+    if (data.success === false) {
+        console.log("Validation errors:", data.errors);
+
+        Object.values(data.errors).forEach((element) => {
+            console.log(element.message);
+            
+           
+        });
+
+        return;
+    }
+
+    console.log("Registrierung erfolgreich");
+    // User successfully registert
+    // redirect either to the dashboard or the company setup --> or mail verification
+
+    
 };

@@ -7,7 +7,7 @@ import Finance from "./pages/finance.jsx";
 import Revenue from "./pages/finance/revenue.jsx";
 import Sales from "./pages/sales/sales.jsx";
 import Products from "./pages/sales/products.jsx";
-
+import LandingPage from "./pages/landing/landingPage.jsx";
 
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/login/register.jsx"
@@ -37,17 +37,7 @@ export default function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={
-            <Dashboard
-              sidebarOpen={sidebarOpen}
-              setSidebarOpen={setSidebarOpen}
-              financeOpen={financeOpen}
-              setFinanceOpen={setFinanceOpen}
-              salesOpen={salesOpen}
-              setSalesOpen={setSalesOpen}
-            />
-            } 
-          />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={
             <Dashboard
               sidebarOpen={sidebarOpen}
