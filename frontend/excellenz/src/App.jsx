@@ -8,6 +8,7 @@ import Revenue from "./pages/finance/revenue.jsx";
 import Sales from "./pages/sales/sales.jsx";
 import Products from "./pages/sales/products.jsx";
 import "./index.css";
+import CompanySetup from "./pages/companySetup"
 
 
 export default function App() {
@@ -108,6 +109,13 @@ export default function App() {
             />
             } 
           />
+
+          {/* Test Route */}
+          <Route path="/setup" element={ <CompanySetup
+            />
+            }
+          />
+
         </Routes>
       </div>
 
