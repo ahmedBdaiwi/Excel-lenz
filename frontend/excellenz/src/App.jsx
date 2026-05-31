@@ -7,6 +7,10 @@ import Finance from "./pages/finance.jsx";
 import Revenue from "./pages/finance/revenue.jsx";
 import Sales from "./pages/sales/sales.jsx";
 import Products from "./pages/sales/products.jsx";
+
+
+import Login from "./pages/login/login.jsx";
+import Register from "./pages/login/register.jsx"
 import "./index.css";
 
 
@@ -15,6 +19,10 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [financeOpen, setFinanceOpen] = useState(true);
   const [salesOpen, setSalesOpen] = useState(true);
+
+  {/* Testing */}
+  const [isLogin, setIsLogin] = useState(true);
+
 
   return (
     <BrowserRouter>
@@ -105,6 +113,19 @@ export default function App() {
               setFinanceOpen={setFinanceOpen}
               salesOpen={salesOpen}
               setSalesOpen={setSalesOpen}
+            />
+            } 
+          />
+
+          {/* Test Route */}
+          <Route path="/login" element={ <Login
+              onSwitch={() => setIsLogin(false)}
+            />
+            } 
+          />
+
+          <Route path="/register" element={ <Register
+              onSwitch={() => setIsLogin(true)}
             />
             } 
           />

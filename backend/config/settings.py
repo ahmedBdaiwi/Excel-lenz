@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
+    "apps.users.apps.UsersConfig",
+    "apps.companies.apps.CompaniesConfig",
+    "apps.goals.apps.GoalsConfig",
+    "apps.finance.apps.FinanceConfig",
+    "apps.analytics.apps.AnalyticsConfig",
+    "apps.notifications.apps.NotificationsConfig",
+    "apps.core.apps.CoreConfig",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -47,6 +56,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite
+    "http://localhost:3000",  # React
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -115,3 +131,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
