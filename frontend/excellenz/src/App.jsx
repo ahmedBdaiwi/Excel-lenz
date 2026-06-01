@@ -12,6 +12,7 @@ import LandingPage from "./pages/landing/landingPage.jsx";
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/login/register.jsx"
 import "./index.css";
+import CompanySetup from "./pages/companySetup"
 
 
 export default function App() {
@@ -119,6 +120,11 @@ export default function App() {
             />
             } 
           />
+          <Route path="/setup" element={ <CompanySetup
+            />
+            }
+          />
+
         </Routes>
       </div>
 
